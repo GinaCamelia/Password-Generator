@@ -28,7 +28,7 @@ N/A
 Click on the **generate password** and answer a few questions. The password geneator then generates a password that meets your criteria. 
 
 ![](./resources/ss-password-generator.png)
-
+Deployed application: https://ginacamelia.github.io/Password-Generator/
 
 
 
