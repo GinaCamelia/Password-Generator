@@ -53,6 +53,21 @@ function getRandom(arr) {
 };
 
 
+// Function to generate password with user input
+function generatePassword() {
+    //stored the function in a variable
+    let options = getPasswordOptions();
+
+    // Empty string to store the generated password
+    let password ='';
+
+    // Empty string to store the types of characters chosen by user
+    let passwordTypes = '';
+
+    // Empty array to store the characters included in the password
+    let includedCharacters = [];
+}
+
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
