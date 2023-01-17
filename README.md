@@ -25,7 +25,7 @@ N/A
 
 ## Usage
 
-Click on the **generate random password** and answer a few questions. The password geneator then generates a password that meets your criteria. 
+Click on the **generate password** and answer a few questions. The password geneator then generates a password that meets your criteria. 
 
 ![](./resources/ss-password-generator.png)
 
