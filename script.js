@@ -47,7 +47,11 @@ function getPasswordOptions() {
 };
 
 // Function for getting a random element from an array
-function getRandom(arr) {}
+function getRandom(arr) {
+    let randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+};
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
