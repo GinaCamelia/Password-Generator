@@ -18,7 +18,7 @@ function getPasswordOptions() {
 
     // These lines checks if the entered password length is not a number or is less than 10 or greater than 64 characters
     if (isNaN(passwordLength) === true || passwordLength < 10 || passwordLength > 64) {
-        alert('Password length must be a NUMBER between 10 and 64 (included). Please try again.');
+        alert('Password length must be a NUMBER between 10 (included) and 64 (included). Please try again.');
         return;
     } else {        
         // Continue once password length requirements are met
@@ -56,16 +56,55 @@ function getRandom(arr) {
 // Function to generate password with user input
 function generatePassword() {
     //stored the function in a variable
-    let options = getPasswordOptions();
+    let options = getPasswordOptions(); // uses the returned object to determine wich type of characters to be included in the password
 
     // Empty string to store the generated password
     let password ='';
 
-    // Empty string to store the types of characters chosen by user
-    let passwordTypes = '';
+    // empty string to store the types of characters to include in the password
+    let passwordOptions = '';
 
-    // Empty array to store the characters included in the password
+    // Empty array to store the characters definitely included in the password
     let includedCharacters = [];
+
+    // loop  through the desired password length
+    for (let i = 0; i < options.passwordLength; i++) {
+        // check if special characters are desired
+        if (options.confirmSpecialChar) {
+            passwordOptions.concat(specialCharacters);
+            includedCharacters.push(getRandom(specialCharacters));
+        }
+
+        // check if numeric characters are desired and if one hasn't been added yet
+        if (options.confirmNumber) {
+            passwordOptions = passwordOptions.concat(numericCharacters);
+            includedCharacters.push(getRandom(numericCharacters));
+        }
+
+        // check if lowercase characters are desired and if one hasn't been added yet
+        if (options.confirmLowerCase) {
+            passwordOptions = passwordOptions.concat(lowerCasedCharacters);
+            includedCharacters.push(getRandom(lowerCasedCharacters));
+          }        
+
+        // check if uppercase characters are desired and if one hasn't been added yet
+        if (options.confirmUpperCase) {
+            passwordOptions = passwordOptions.concat(upperCasedCharacters);
+            includedCharacters.push(getRandom(upperCasedCharacters));
+          }
+
+        if (i in includedCharacters) {
+            password += includedCharacters[i];
+        } else {
+            // extract random number between 0 and nr of charcaters from the password
+            let randomIndex = Math.floor(Math.random() * passwordOptions.length);
+
+            // extract random characters from all the characters the password contains
+            const randomChar = passwordOptions.substring(randomIndex, randomIndex + 1);
+            password += passwordOptions.substring(randomIndex, randomIndex + 1);
+        }
+    }
+        return password;
 }
 
 // Get references to the #generate element
